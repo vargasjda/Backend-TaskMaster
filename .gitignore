@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Directorios de paquetes
+dist/
+build/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs y editores
+.vscode/
+.idea/

@@ -1,9 +1,7 @@
-// src/models/User.js
-
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection');
 
-// Definir el modelo de Usuario
+
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
@@ -28,7 +26,7 @@ const User = sequelize.define('User', {
     allowNull: false
   }
 }, {
-  timestamps: true  // Añade createdAt y updatedAt automáticamente
+  timestamps: true  
 });
 
 module.exports = User;

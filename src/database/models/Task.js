@@ -1,37 +1,29 @@
-// src/models/Task.js
-
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection');
 
-// Definir el modelo de Tarea
 const Task = sequelize.define('Task', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
   title: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   description: {
     type: DataTypes.TEXT,
-    allowNull: false
-  },
-  dueDate: {
-    type: DataTypes.DATE,
-    allowNull: false
+    allowNull: true,
   },
   status: {
-    type: DataTypes.ENUM('pending', 'in-progress', 'completed'),
-    defaultValue: 'pending'
+    type: DataTypes.STRING,
+    defaultValue: 'pendiente',
   },
-  priority: {
-    type: DataTypes.ENUM('low', 'medium', 'high'),
-    defaultValue: 'medium'
-  }
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'Users', 
+      key: 'id',
+    },
+  },
 }, {
-  timestamps: true  // Añade createdAt y updatedAt automáticamente
+  timestamps: true,
 });
 
 module.exports = Task;

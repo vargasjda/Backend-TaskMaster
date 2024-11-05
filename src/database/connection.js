@@ -4,18 +4,21 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// Carga la URL de conexión de las variables de entorno
-const databaseUrl = process.env.DATABASE_URL;
-
-// Crea la conexión con Sequelize usando la URL de conexión
-const sequelize = new Sequelize(databaseUrl, {
-  dialect: 'mysql',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // Esto puede ser necesario para conexiones en la nube
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'mysql',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
     },
-  },
-});
+  }
+);
 
 module.exports = sequelize;

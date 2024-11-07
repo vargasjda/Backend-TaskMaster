@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../database/models/User'); // Asegúrate de que esta ruta sea correcta
+const User = require('../database/models/User'); 
 
 // Función para manejar el registro de usuario
 exports.register = async (req, res) => {
   try {
-    const { userName, email, password } = req.body; // Cambiado username por userName
+    const { userName, email, password } = req.body; 
     
     // Verificar si el usuario ya existe
     const userExists = await User.findOne({ where: { email } });
@@ -13,7 +13,7 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'El usuario ya está registrado' });
     }
 
-    // Hashear la contraseña
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Crear el usuario
